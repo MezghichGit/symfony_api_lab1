@@ -1,0 +1,20 @@
+[
+    {
+        "libelle":"Panadol",
+        "prix":3000,
+        "code":"12EF",
+        "dateExp":"31/08/2022"
+    },
+    {
+        "libelle":"Fervex",
+        "prix":10000,
+        "code":"13EF",
+        "dateExp":"31/09/2022"
+    },
+    {
+        "libelle":"Glamoxil",
+        "prix":6000,
+        "code":"14EF",
+        "dateExp":"31/10/2022"
+    }
+]
