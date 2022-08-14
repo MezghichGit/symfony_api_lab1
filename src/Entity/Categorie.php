@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 //collectionOperations={"get"},
 //itemOperations={"get","put"},
@@ -17,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  * normalizationContext={"groups"={"categorie:read"}},
  * denormalizationContext={"groups"={"categorie:write"}}
  * )
+ * @ApiFilter(SearchFilter::class, properties={"libelle": "partial"})
  * @ORM\Entity(repositoryClass=CategorieRepository::class)
  */
 class Categorie

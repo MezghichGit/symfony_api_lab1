@@ -6,17 +6,19 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\PharmacieRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource(
- * collectionOperations={"get","post"},
+* @ApiResource(
+* collectionOperations={"get","post"={ "validation_groups"={"pharmacie:create"}}},
 * itemOperations={
 * "get" = {"normalization_context" = {"groups"={"pharmacie:read","pharmacie:details","categorie:details"}}},
 * "put",
 * "delete"
 * },
  * normalizationContext={"groups"={"pharmacie:read"}},
- * denormalizationContext={"groups"={"pharmacie:write"}}
+ * denormalizationContext={"groups"={"pharmacie:write"}},
+
 )
  * @ORM\Entity(repositoryClass=PharmacieRepository::class)
  */
@@ -33,6 +35,13 @@ class Pharmacie
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"pharmacie:read", "pharmacie:write"})
+     * @Assert\NotBlank()
+     * @Assert\Length(
+        * min=3,
+        * max=30,
+        * minMessage="Le nom de la pharmacie en min 3 et max 30 caractères",
+        * maxMessage="Le nom de la pharmacie ne doit pas dépasser max 30 caractères"
+        )
      */
     private $nom;
 
@@ -45,6 +54,7 @@ class Pharmacie
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"pharmacie:read", "pharmacie:write"})
+     * @Assert\NotBlank(groups={"pharmacie:create"})
      */
     private $region;
 
