@@ -10,7 +10,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
 * @ApiResource(
-* collectionOperations={"get","post"={ "validation_groups"={"pharmacie:create"}}},
+* collectionOperations={"get"= {"normalization_context" = {"groups"={"pharmacie:read","pharmacie:details","categorie:details"}}},
+*"post"={ "validation_groups"={"pharmacie:create"}}},
 * itemOperations={
 * "get" = {"normalization_context" = {"groups"={"pharmacie:read","pharmacie:details","categorie:details"}}},
 * "put",
