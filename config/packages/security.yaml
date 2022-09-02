@@ -54,8 +54,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
 
-        #- { path: ^/api/pharma/users, roles: ROLE_ADMIN }
-        #- { path: ^/api/pharma/categories, roles: ROLE_USER }
+        - { path: ^/api/pharma/users, roles: ROLE_ADMIN }
+        - { path: ^/api/pharma/categories, roles: ROLE_USER }
         - { path: ^/api/pharma/pharmacies, roles: ROLE_USER }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
